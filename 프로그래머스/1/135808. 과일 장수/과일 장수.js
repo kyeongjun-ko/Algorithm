@@ -14,7 +14,7 @@ function solution(k, m, score) {
     });
     
     while (true) {
-        if (boxCount === maxBoxes || k === 0) {
+        if (boxCount === maxBoxes || k === -1) {
             break;
         }
         
