@@ -1,35 +1,24 @@
 function solution(k, m, score) {
-    let result = 0;
+    const maxBoxes = score.length / m;
+    const scoreMap = {};
+    let accProfit = 0;
     let boxCount = 0;
     let box = [];
-    const boxes = score.length / m;
-    const sortedScore = score.sort((a, b) => b - a);
     
-    const scoreMap = {};
-    
-    
-    for (let i = 1; i <= k; i++) {
-        scoreMap[i] = 0;
-    }
-    
-    score.forEach(e => scoreMap[e] += 1);
-    
-    
-    let maxFruit = k;
+    score.forEach(e => {
+        if (!scoreMap[e]) {
+            scoreMap[e] = 1;
+        } else {
+            scoreMap[e] += 1            
+        }
+    });
     
     while (true) {
-        if (boxCount === boxes || k === -1) {
+        if (boxCount === maxBoxes || k === 0) {
             break;
         }
         
-        if (!scoreMap[k]) {
-            k -= 1; 
-            
-            continue;
-        }
-        
-        if (scoreMap[k] === 0) {
-            delete scoreMap[k];
+        if (!scoreMap[k] || scoreMap[k] === 0) {
             k -= 1; 
             
             continue;
@@ -40,10 +29,10 @@ function solution(k, m, score) {
 
         if (box.length === m) {
             boxCount++;
-            result += Math.min(...box) * m;
-            box = [];
+            accProfit += Math.min(...box) * m;
+            box.splice(0);
         }
     }
     
-    return result;
+    return accProfit;
 };
