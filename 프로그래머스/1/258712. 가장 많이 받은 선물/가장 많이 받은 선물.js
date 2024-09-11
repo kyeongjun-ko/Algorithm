@@ -92,6 +92,5 @@ function solution(friends, gifts) {
         }
     })
     
-    console.log("giftMap", giftMap)
     return answer;
 }
