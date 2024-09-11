@@ -16,7 +16,6 @@ function solution(video_len, pos, op_start, op_end, commands) {
     const startOpenningTime = stringToSeconds(op_start);
     const endOpenningTime = stringToSeconds(op_end);
 
-    
     const getCurrentTime = (time) => {
         const posTime = stringToSeconds(pos);
         
@@ -66,8 +65,6 @@ function solution(video_len, pos, op_start, op_end, commands) {
             currentTime = skipOpenning(prevTime(currentTime));
         }
     })
-    
-    console.log("result", secondsToString(skipOpenning(currentTime)));
     
     return secondsToString(skipOpenning(currentTime));
 }
