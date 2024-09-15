@@ -1,28 +1,22 @@
 function solution(players, callings) {
+    const copyPlayers = [...players];
     const playersIndex = {};
     
     players.forEach((player, index) => {
         playersIndex[player] = index;
     });
     
-    // const playersIndex = players.reduce((acc, cur, index) => {
-    //     return {...acc, [cur]: index}
-    // }, {});
-    
-    const copyPlayers = [...players];
-    
     callings.forEach(player => {
-        const passIndex = playersIndex[player];
-        const passedName= copyPlayers[passIndex - 1];
-        const passedIndex = playersIndex[passedName];
+        const loserIndex = playersIndex[player];
+        const slowerName= copyPlayers[loserIndex - 1];
+        const winnerIndex = playersIndex[slowerName];
         
         playersIndex[player] -= 1;
-        playersIndex[passedName] += 1;
+        playersIndex[slowerName] += 1;
         
-        copyPlayers[passedIndex] = player;
-        copyPlayers[passIndex] = passedName;
+        copyPlayers[winnerIndex] = player;
+        copyPlayers[loserIndex] = slowerName;
     });
 
-    
     return copyPlayers;
 }
