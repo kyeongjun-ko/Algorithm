@@ -1,12 +1,20 @@
 function solution(s) {
-  const lower_s = s.toLowerCase();
+    const stringList = s.split(" ");
+    const result = [];
     
-  return lower_s.split(' ').map(word => 
-    word.replace(/^[a-z]/, word.charAt(0).toUpperCase())
-  ).join(' ')
+    for (const word of stringList) {
+        const target = [...word];
 
+        const turnToJaden = target.map((e, index) => {
+            if (index === 0 && isNaN(e)) {
+                return e.toUpperCase();
+            }
 
-  return s.split(' ').map(word => 
-    word.charAt(0).toUpperCase() + word.substring(1).toLowerCase()
-  ).join(' ')
+            return e.toLowerCase();
+        })
+        
+        result.push(turnToJaden.join(""));
+    }
+    
+    return result.join(" ")
 }
