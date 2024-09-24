@@ -111,38 +111,15 @@ class MaxHeap extends Heap {
 }
 
 function solution(n, works) {
-    const copyWorks = works.slice();
-    let maxIndex;
-    
-//     for (let i = 0; i < n; i++) {
-//         maxIndex = copyWorks.indexOf(Math.max(...copyWorks));
-        
-//         copyWorks[maxIndex] -= 1;
-        
-//         if (copyWorks[maxIndex] === 0) {
-//             copyWorks.splice(maxIndex, 1);
-//         }
-//     }
-    
     const maxHeap = new MaxHeap();
     
     for (const item of works) {
         maxHeap.add(item);
     }
     
-    // console.log("initHeap", maxHeap.items)
-    
     for (let i = 0; i < n; i++) {
-        // console.log("before maxHEap", maxHeap.items);
         maxHeap.minus();
-        
-        // console.log("after maxHEap", maxHeap.items);
-        
     }
     
-    // console.log("maxHeap", maxHeap.items);
-    
     return maxHeap.items.reduce((acc, cur) => acc + cur ** 2, 0);
-    
-    // return copyWorks.reduce((acc, cur) => acc + cur ** 2,0);
 }
