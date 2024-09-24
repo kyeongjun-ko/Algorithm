@@ -1,13 +1,13 @@
-const dropIndexOfString = (word, index) => {
+const dropString = (word, index) => {
     return [...word].filter((_, i) => i !== index).join("");
 }
 
-const compareDropString = (droppedWord, index, wordList) => {
+const findDropString = (droppedWord, index, wordList) => {
     const indexList = [];
     let comparable = false;
         
     for (let i = 0; i < wordList.length; i++) {
-        const droppedFromWords = dropIndexOfString(wordList[i], index);
+        const droppedFromWords = dropString(wordList[i], index);
 
         if (droppedWord === droppedFromWords) {
             comparable = true;
@@ -20,23 +20,20 @@ const compareDropString = (droppedWord, index, wordList) => {
 }
 
 function solution(begin, target, words) {
-    let formatCount = Infinity;
     const visited = [...words].map(e => 0);
-    const a = [[begin, 0, visited]];
-    let temp;
-        
-    while (a.length !== 0) {
-        const compareTarget = a.shift();
-        temp = compareTarget;
-        
+    const search = [[begin, 0, visited]];
+    let formatCount = Infinity;
+
+    while (search.length !== 0) {
+        const compareTarget = search.shift();
         const [currentWord, currentCount, visitList] = compareTarget;
 
         if (currentWord !== target) {
             for (let i = 0; i < currentWord.length; i++) {
                 if (currentWord[i] !== target[i]) {
-                    const targetWord = dropIndexOfString(currentWord, i);
+                    const targetWord = dropString(currentWord, i);
 
-                    const [comparable, indexList] = compareDropString(targetWord, i, words);
+                    const [comparable, indexList] = findDropString(targetWord, i, words);
 
                     if (!comparable) {
                         continue;
@@ -49,25 +46,17 @@ function solution(begin, target, words) {
                             
                             newVisited[index] = 1;
 
-                            a.push([words[index], newCount, newVisited]);
+                            search.push([words[index], newCount, newVisited]);
                         }
                     }
                 }
             }    
+        } else {
+            formatCount = Math.min(currentCount, formatCount);
         }
 
-        if (currentWord === target) {
-            if (currentCount < formatCount) {
-                formatCount = currentCount;
-            }
+        if (search.length === 0) {
+            return currentWord !== target ? 0 : formatCount;
         }
-
-        if (a.length === 0) {
-            if (currentWord !== target) {
-                return 0
-            }
-            
-            return formatCount;
-        } 
     };
 }
