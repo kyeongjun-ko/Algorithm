@@ -18,4 +18,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0242-valid-anagram](https://github.com/kyeongjun-ko/Algorithm/tree/master/0242-valid-anagram) |
+## Array
+|  |
+| ------- |
+| [0792-binary-search](https://github.com/kyeongjun-ko/Algorithm/tree/master/0792-binary-search) |
+## Binary Search
+|  |
+| ------- |
+| [0792-binary-search](https://github.com/kyeongjun-ko/Algorithm/tree/master/0792-binary-search) |
 <!---LeetCode Topics End-->
