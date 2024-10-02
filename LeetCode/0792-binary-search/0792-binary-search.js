@@ -9,23 +9,22 @@ var search = function(nums, target) {
 
     // 개선 접근방식 - 이진탐색    
     let left = 0;
-    let right = nums.length;
+    let right = nums.length - 1;
     let mid;
 
-    while (left !== right) {
-        mid = Math.floor((left + right) / 2);
-        console.log("mid", mid);
-
+    while (left <= right) {    
+        mid = Math.floor((left + right) / 2);    
+        
         if (nums[mid] === target) return mid;
 
         if (nums[mid] > target) {
-            right--;
+            right = mid - 1;
 
             continue;
         }
 
         if (nums[mid] < target) {
-            left++;
+            left = mid + 1;
 
             continue;
         }
@@ -33,7 +32,5 @@ var search = function(nums, target) {
         break;
     }
 
-    return -1;
-
-    
+    return nums[mid] === target ? mid : -1;
 };
