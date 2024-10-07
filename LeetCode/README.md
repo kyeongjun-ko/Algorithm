@@ -30,6 +30,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Depth-First Search
 |  |
 | ------- |
+| [0110-balanced-binary-tree](https://github.com/kyeongjun-ko/Algorithm/tree/master/0110-balanced-binary-tree) |
 | [0733-flood-fill](https://github.com/kyeongjun-ko/Algorithm/tree/master/0733-flood-fill) |
 ## Breadth-First Search
 |  |
@@ -39,4 +40,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0733-flood-fill](https://github.com/kyeongjun-ko/Algorithm/tree/master/0733-flood-fill) |
+## Tree
+|  |
+| ------- |
+| [0110-balanced-binary-tree](https://github.com/kyeongjun-ko/Algorithm/tree/master/0110-balanced-binary-tree) |
+## Binary Tree
+|  |
+| ------- |
+| [0110-balanced-binary-tree](https://github.com/kyeongjun-ko/Algorithm/tree/master/0110-balanced-binary-tree) |
 <!---LeetCode Topics End-->
