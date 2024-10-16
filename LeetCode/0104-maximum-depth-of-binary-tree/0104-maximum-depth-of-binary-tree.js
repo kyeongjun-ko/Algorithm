@@ -16,9 +16,7 @@ var maxDepth = function(root) {
 
     const dfs = (node, depth) => {
         if (node !== null) {
-            console.log("지금 노드의 위치", node, depth);
-
-        if (MaxDepth < depth) MaxDepth = depth;
+            if (MaxDepth < depth) MaxDepth = depth;
 
             if (node.left !== null) dfs(node.left, depth + 1);
             if (node.right !== null) dfs(node.right, depth + 1);
@@ -29,8 +27,6 @@ var maxDepth = function(root) {
     }
 
     dfs(root, 1);
-
-    console.log("MaxDepth", MaxDepth);
 
     return MaxDepth;
 };
