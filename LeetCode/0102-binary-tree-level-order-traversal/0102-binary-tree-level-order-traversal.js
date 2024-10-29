@@ -13,6 +13,7 @@
 
 var levelOrder = function(root) {
     const depthMap = {};
+    const result = [];
     let search = [[root, 0]];
 
     if (root === null) return [];
@@ -20,15 +21,22 @@ var levelOrder = function(root) {
     while (search.length !== 0) {
         const [targetNode, targetDepth] = search.shift();
 
-        if (depthMap[targetDepth]) {
-            depthMap[targetDepth].push(targetNode.val);
+        if (result[targetDepth]) {
+            result[targetDepth] = [...result[targetDepth], targetNode.val];
         } else {
-            depthMap[targetDepth] = [targetNode.val];
+            result[targetDepth] = [targetNode.val];
         }
+
+        // if (depthMap[targetDepth]) {
+        //     depthMap[targetDepth].push(targetNode.val);
+        // } else {
+        //     depthMap[targetDepth] = [targetNode.val];
+        // }
 
         if (targetNode.left) search.push([targetNode.left, targetDepth + 1]);
         if (targetNode.right) search.push([targetNode.right, targetDepth + 1]);
     }
-
-    return Object.values(depthMap);
+    
+    // return Object.values(depthMap);
+    return result;
 };
